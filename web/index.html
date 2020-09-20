@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link media="screen" type="text/css" rel="stylesheet" href="css/wi2wic.css" />
+    <title>HTML to Wiki Converter</title>
+  </head>
+  <body>
+    <header id="awa-hdr">
+      <div>
+        <h1>HTML to Wiki Converter</h1>
+      </div>
+      <a href="https://github.com/stcarrez/ada-wiki"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/wi2wic/images/forkme.png" alt="Fork me on GitHub"></a>
+    </header>
+    <div id="awa-page">
+      <div id="awa-content">
+        <div class="wi2wic-row">
+          <div class="wi2wic-col wi2wic-url">
+            <span>Import from URL:</span>
+            <input id='wi2wic-url' name='url' size='80' type='text'></input>
+            <input id='wi2wic-submit' name='submit' type='button' value='Import'></input>
+          </div>
+        </div>
+        <div class="wi2wic-row">
+          <div class="wi2wic-col wi2wic-url">
+            <span>Import from file:</span>
+            <input id='wi2wic-file' name='file' size='80' type='file'></input>
+          </div>
+        </div>
+        <div class="wi2wic-row">
+          <div class="wi2wic-col wi2wic-selector">
+            <span>Wiki format:</span>
+            <select id='wi2wic-input-format' name="format">
+              <option value="creole">Creole</option>
+              <option value="dotclear">Dotclear</option>
+              <option value="markdown" selected>Markdown</option> 
+              <option value="mediawiki">Mediawiki</option>
+            </select>
+          </div>
+        </div>
+        <div class="wi2wic-row wi2wic-main-view">
+          <div class="wi2wic-col">
+            <div class='wi2wic-view'>
+              <textarea id='wi2wic-input' name="textarea" wrap="off" rows="30">Write something here</textarea>
+            </div>
+          </div>
+          <div class="wi2wic-col">
+            <div id='wi2wic-render' class='wi2wic-view wiki-text'>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="awa-footer">
+      <div>
+        <span>Served by</span>
+        <a href="https://github.com/stcarrez/ada-wiki/" title="Ada Wiki">Ada Wiki</a> |
+        <a href="https://github.com/stcarrez/ada-servlet/" title="Ada Servlet">Ada Servlet</a> |
+        <a href="https://libre.adacore.com/libre/tools/aws/" title="Ada Web Server">AWS</a> |
+        <a href="https://httpd.apache.org/" title="Apache HTTP Server Project">Apache</a>
+      </div>
+    </footer>
+    <script type="text/javascript" src="js/wi2wic.js"></script>
+  </body>
+</html>
