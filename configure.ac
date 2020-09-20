@@ -1,0 +1,29 @@
+dnl Autoconf configure script for wi2wic
+
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(src/wi2wic.ads)
+
+AM_GNAT_LIBRARY_PROJECT(wi2wic)
+
+# Current release settings
+WI2WIC_MAJOR_VERSION=0
+WI2WIC_MINOR_VERSION=1
+WI2WIC_MICRO_VERSION=0
+WI2WIC_VERSION=$WI2WIC_MAJOR_VERSION.$WI2WIC_MINOR_VERSION.$WI2WIC_MICRO_VERSION
+
+# Set the version number of the project
+AC_SUBST(WI2WIC_VERSION)
+AC_SUBST(WI2WIC_MAJOR_VERSION)
+AC_SUBST(WI2WIC_MINOR_VERSION)
+AC_SUBST(WI2WIC_MICRO_VERSION)
+
+AM_GNAT_FIND_ADA_UTIL([wi2wic])
+AM_GNAT_FIND_ADA_EL([wi2wic])
+AM_GNAT_FIND_ADA_SECURITY([wi2wic])
+AM_GNAT_FIND_ADA_SERVLET([wi2wic])
+AM_GNAT_FIND_ADA_WIKI([wi2wic])
+
+AC_OUTPUT(
+Makefile.conf wi2wic.gpr
+)
