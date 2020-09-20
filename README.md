@@ -1,6 +1,6 @@
 # Wiki To Wiki Converter
 
-[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Atlas.svg)](http://jenkins.vacs.fr/job/Atlas/)
+[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Bionic-Wi2wic.svg)](https://jenkins.vacs.fr/job/Bionic-Wi2wic/)
 [![License](https://img.shields.io/badge/license-APACHE2-blue.svg)](LICENSE)
 ![Commits](https://img.shields.io/github/commits-since/stcarrez/wi2wic/1.0.0.svg)
 
@@ -32,6 +32,7 @@ To configure Wi2wic, use the following command:
 ```
    ./configure
 ```
+
 Then, build the application:
 ```
    make
@@ -48,33 +49,38 @@ and point your browser to http://localhost:8080/wi2wic/index.html
 
 # Docker
 
-A docker container is available for those who want to try Atlas without installing
-and building all required packages.  To use the Atlas docker container you can
+A docker container is available for those who want to try Wi2wic without installing
+and building all required packages.  To use the Wi2wic docker container you can
 run the following commands:
 
 ```
-   sudo docker pull ciceron/atlas
-   sudo docker run --name atlas -p 8080:8080 ciceron/atlas
+   sudo docker pull ciceron/wi2wic
+   sudo docker run --name wi2wic -p 8080:8080 ciceron/wi2wic
 ```
 
-and then point your browser to http://localhost:8080/atlas/index.html
+and then point your browser to http://localhost:8080/wi2wic/index.html
 
 To stop the running application you will use:
 ```
-   sudo docker stop atlas
-   sudo docker rm atlas
+   sudo docker stop wi2wic
+   sudo docker rm wi2wic
+```
+
+If you want to build locally the docker image, you can use:
+
+```
+   sudo docker build -t wi2wic -f docker/Dockerfile .
 ```
 
 ## Structure of the server
 
-The server consists of several Ada packages that are generated from
-the OpenAPI specification.
+The server consists of several Ada packages:
 
 | Source file | Package | Description |
 | ------------ | ------------- | ------------- |
 | src/wi2wic.ads|Wi2wic|The server root package declaration |
 | src/wi2wic-rest.ads|Wi2wic.Rest|The server declaration and instantiation|
-| src/wi2wic-rest.adb|Wi2wic.Rest|The server implementation (empty stubs)|
+| src/wi2wic-rest.adb|Wi2wic.Rest|The server REST API implementation|
 | src/wi2wic-server.adb|Wi2wic.Server|The server main procedure|
 
 
