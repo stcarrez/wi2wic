@@ -3,3 +3,11 @@
 
 # Ada Library Information
 *.ali
+
+*~
+*.log
+config.status
+wi2wic.gpr
+obj
+lib
+Makefile.conf
