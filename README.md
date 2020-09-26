@@ -22,6 +22,8 @@ The server is written in Ada and provides the following REST operations:
 
 You can try Wi2wic on https://wi2wic.vacs.fr/wi2wic/index.html
 
+# Building Wi2wic
+
 To build `wi2wic` you will need the following projects:
 
 * Ada Servlet   (https://github.com/stcarrez/ada-servlet)
@@ -37,8 +39,6 @@ Wi2wic relies on the following external projects:
 
 Before building and configuring Wi2wic, you should have configured,
 built and installed all of the above projects.
-
-# Building Wi2wic
 
 To configure Wi2wic, use the following command:
 ```
@@ -86,26 +86,14 @@ If you want to build locally the docker image, you can use:
    sudo docker build -t wi2wic -f docker/Dockerfile .
 ```
 
-## Structure of the server
-
-The server consists of several Ada packages:
-
-| Source file | Package | Description |
-| ------------ | ------------- | ------------- |
-| src/wi2wic.ads|Wi2wic|The server root package declaration |
-| src/wi2wic-rest.ads|Wi2wic.Rest|The server declaration and instantiation|
-| src/wi2wic-rest.adb|Wi2wic.Rest|The server REST API implementation|
-| src/wi2wic-server.adb|Wi2wic.Server|The server main procedure|
-
-
-## Security
+# Security
 
 The server can download a URL through the */wi2wic/import* API entry point.
 The server only accepts *http://* and *https://* URL.  The server should
 be run from a docker container or similar restricted environment in order
 to protect malicious URL.
 
-## Limitations
+# Limitations
 
 The HTML parser and converter is able to read and parse invalid HTML but
 some structures are not convertable to some Wiki syntax.
