@@ -10,6 +10,8 @@ Wi2wic is a small server application written in Ada that provides the following 
 * convert a Wiki text from one syntax to another,
 * render a Wiki text in HTML.
 
+You can try Wi2wic on https://wi2wic.vacs.fr/wi2wic/index.html
+
 To build `wi2wic` you will need the following projects:
 
 * Ada Servlet   (https://github.com/stcarrez/ada-servlet)
@@ -32,6 +34,8 @@ To configure Wi2wic, use the following command:
 ```
    ./configure
 ```
+
+If something goes wrong, check that you have installed the dependencies mentioned above.
 
 Then, build the application:
 ```
