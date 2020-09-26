@@ -6,7 +6,15 @@
 [![Docker](https://badgen.net/docker/pulls/ciceron/wi2wic)](https://hub.docker.com/r/ciceron/wi2wic/)
 
 
-Wi2wic is a small server application written in Ada that provides the following REST operations:
+Wi2wic is a small server that allows to convert HTML in Wiki text such as Markdown, MediaWiki, Dotclear or Creole.
+It can also convert one Wiki syntax to another.  It can be used to:
+
+* Migrate HTML page in Markdown or another Wiki,
+* Convert Wiki page in HTML,
+* Convert HTML documentation in Markdown or another Wiki,
+* Cleanup a complex and noisy HTML page
+
+The server is written in Ada and provides the following REST operations:
 
 * import some HTML content and convert it in a Wiki syntax,
 * convert a Wiki text from one syntax to another,
