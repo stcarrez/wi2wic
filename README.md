@@ -88,3 +88,20 @@ The server consists of several Ada packages:
 | src/wi2wic-server.adb|Wi2wic.Server|The server main procedure|
 
 
+## Security
+
+The server can download a URL through the */wi2wic/import* API entry point.
+The server only accepts *http://* and *https://* URL.  The server should
+be run from a docker container or similar restricted environment in order
+to protect malicious URL.
+
+## Limitations
+
+The HTML parser and converter is able to read and parse invalid HTML but
+some structures are not convertable to some Wiki syntax.
+
+The HTML to Wiki converter does not read the CSS and therefore cannot
+convert correctly some HTML that has specific presentation through their CSS.
+The interpretation of HTML+CSS is left to the reader as an exercise
+(Hint: use the [Ada parser for CSS files](https://github.com/stcarrez/ada-css))
+
