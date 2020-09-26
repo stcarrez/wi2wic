@@ -3,6 +3,8 @@
 [![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Bionic-Wi2wic.svg)](https://jenkins.vacs.fr/job/Bionic-Wi2wic/)
 [![License](https://img.shields.io/badge/license-APACHE2-blue.svg)](LICENSE)
 ![Commits](https://img.shields.io/github/commits-since/stcarrez/wi2wic/1.0.0.svg)
+[![Docker](https://badgen.net/docker/pulls/ciceron/wi2wic)](https://hub.docker.com/r/ciceron/wi2wic/)
+
 
 Wi2wic is a small server application written in Ada that provides the following REST operations:
 
