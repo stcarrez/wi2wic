@@ -51,6 +51,7 @@ package body Wi2wic.Applications is
       App.Add_Mapping (Name => "files", Pattern => "*.js");
       App.Add_Mapping (Name => "files", Pattern => "*.png");
       App.Add_Mapping (Name => "files", Pattern => "*.css");
+      App.Add_Mapping (Name => "files", Pattern => "*.svg");
       App.Add_Mapping (Name => "files", Pattern => "*.map");
       App.Add_Mapping (Name => "files", Pattern => "*.jpg");
    end Configure;

@@ -224,6 +224,7 @@ package body Wi2wic.Rest is
       declare
          Html_Filter : aliased Wiki.Filters.Html.Html_Filter_Type;
          Engine      : Wiki.Parsers.Parser;
+         Data        : constant String := Content.Get_Body;
       begin
          Html_Filter.Hide (Wiki.FOOTER_TAG);
          Html_Filter.Hide (Wiki.HEAD_TAG);
@@ -232,7 +233,7 @@ package body Wi2wic.Rest is
          Html_Filter.Hide (Wiki.IFRAME_TAG);
          Engine.Set_Syntax (Wiki.SYNTAX_HTML);
          Engine.Add_Filter (Html_Filter'Unchecked_Access);
-         Engine.Parse (Content.Get_Body, Doc);
+         Engine.Parse (Data, Doc);
       end;
       Render_Doc (Doc, Syntax, Stream);
 
