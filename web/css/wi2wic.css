@@ -212,6 +212,20 @@ body {
 #awa-hdr {
     min-height: 5em;
     height: 5em;
+    display: flex;
+}
+#ada-hdr div {
+    float: left;
+    flex: 1;
+    display: block;
+}
+.wi2wic-logo {
+    width: 5em;
+    padding: 0.5em;
+}
+.wi2wic-logo img {
+    width: 100%;
+    height: 100%;
 }
 #awa-hdr, #awa-footer {
     clear: both;
