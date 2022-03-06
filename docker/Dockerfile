@@ -15,13 +15,13 @@ RUN mkdir -p /usr/src \
 
 ### 2. stage: create production image
 
-FROM ubuntu:bionic AS wi2wic
+FROM ubuntu:focal AS wi2wic
 
 ENV INSTALL_PREFIX /usr/local
 ENV BUILD_PREFIX /usr/src/wi2wic
 
 RUN apt-get update && \
-    apt-get install -y libaws17.2.2017
+    apt-get install -y libaws5
 
 COPY --from=wi2wic-build ${BUILD_PREFIX}/bin/ ${INSTALL_PREFIX}/bin/
 COPY --from=wi2wic-build ${BUILD_PREFIX}/web/ ${INSTALL_PREFIX}/web/
