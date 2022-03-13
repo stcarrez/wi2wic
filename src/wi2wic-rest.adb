@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------
 --  wi2wic-rest -- REST entry points
---  Copyright (C) 2020 Stephane Carrez
+--  Copyright (C) 2020, 2022 Stephane Carrez
 --  Written by Stephane Carrez (Stephane.Carrez@gmail.com)
 --
 --  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,7 @@ with Wiki.Parsers;
 with Wiki.Filters.Html;
 with Wiki.Render.Html;
 with Wiki.Render.Wiki;
+with Wiki.Helpers;
 with Wiki.Streams.Html.Stream;
 with Util.Http.Clients;
 with Util.Strings;
@@ -58,6 +59,8 @@ package body Wi2wic.Rest is
          return Wiki.SYNTAX_CREOLE;
       elsif Name = "mediawiki" then
          return Wiki.SYNTAX_MEDIA_WIKI;
+      elsif Name = "textile" then
+         return Wiki.SYNTAX_TEXTILE;
       elsif Name = "html" then
          return Wiki.SYNTAX_HTML;
       else
@@ -70,22 +73,37 @@ package body Wi2wic.Rest is
                          Stream : in out Servlet.Streams.Input_Stream'Class) is
       type Input_Stream is new Wiki.Streams.Input_Stream with null record;
 
-      --  Read one character from the input stream and return False to the <tt>Eof</tt> indicator.
-      --  When there is no character to read, return True in the <tt>Eof</tt> indicator.
+      --  Read the input stream and fill the `Into` buffer until either it is full or
+      --  we reach the end of line.  Returns in `Last` the last valid position in the
+      --  `Into` buffer.  When there is no character to read, return True in
+      --  the `Eof` indicator.
       overriding
       procedure Read (Input : in out Input_Stream;
-                      Char  : out Wiki.Strings.WChar;
+                      Into  : in out Wiki.Strings.WString;
+                      Last  : out Natural;
                       Eof   : out Boolean);
 
       overriding
       procedure Read (Input : in out Input_Stream;
-                      Char  : out Wiki.Strings.WChar;
+                      Into  : in out Wiki.Strings.WString;
+                      Last  : out Natural;
                       Eof   : out Boolean) is
+         Pos  : Natural := Into'First;
+         Char : Wiki.Strings.WChar;
       begin
-         Stream.Read (Char);
+         Eof := False;
+         while Pos <= Into'Last loop
+            Stream.Read (Char);
+            Into (Pos) := Char;
+            Pos := Pos + 1;
+            exit when Char = Wiki.Helpers.CR or Char = Wiki.Helpers.LF;
+         end loop;
+         Last := Pos - 1;
          Eof := Stream.Is_Eof;
+
       exception
          when others =>
+            Last := Pos - 1;
             Eof := True;
       end Read;
 
