@@ -2,7 +2,8 @@ dnl Autoconf configure script for wi2wic
 
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(src/wi2wic.ads)
+AC_INIT
+AC_CONFIG_SRCDIR([src/wi2wic.ads])
 
 AM_GNAT_LIBRARY_PROJECT(wi2wic)
 
@@ -24,6 +25,6 @@ AM_GNAT_FIND_ADA_SECURITY([wi2wic])
 AM_GNAT_FIND_ADA_SERVLET([wi2wic])
 AM_GNAT_FIND_ADA_WIKI([wi2wic])
 
-AC_OUTPUT(
-Makefile.conf wi2wic.gpr
-)
+AC_CONFIG_FILES([Makefile.conf wi2wic.gpr
+])
+AC_OUTPUT
