@@ -25,7 +25,7 @@ It was created as a demo site for [Ada Wiki](https://github.com/stcarrez/ada-wik
 
 # Building Wi2wic
 
-To build `wi2wic` you will [Alire](https://github.com/alire-project/alire).
+To build `wi2wic` you will need [Alire](https://github.com/alire-project/alire).
 
 Then, build the application:
 ```
