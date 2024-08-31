@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/wi2wic/badges/build.json)](https://porion.vacs.fr/porion/projects/view/wi2wic/summary)
 [![License](https://img.shields.io/badge/license-APACHE2-blue.svg)](LICENSE)
-![Commits](https://img.shields.io/github/commits-since/stcarrez/wi2wic/1.0.0.svg)
+[![Commits](https://img.shields.io/github/commits-since/stcarrez/wi2wic/1.0.0.svg)]
 [![Docker](https://badgen.net/docker/pulls/ciceron/wi2wic)](https://hub.docker.com/r/ciceron/wi2wic/)
 
 Wi2wic is a small server that allows to convert HTML in Wiki text such as Markdown, MediaWiki, Dotclear or Creole.
