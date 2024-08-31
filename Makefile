@@ -10,7 +10,7 @@ LIBNAME=lib${NAME}
 ROOTDIR=.
 
 build::
-	$(GNATMAKE) -m -p -P "$(GPRPATH)" $(MAKE_ARGS)
+	$(BUILD_COMMAND) $(GPRFLAGS) $(MAKE_ARGS)
 
 install::
 	$(MKDIR) -p $(DESTDIR)$(prefix)/bin
