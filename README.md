@@ -1,10 +1,9 @@
 # Wiki To Wiki Converter
 
-[![Build Status](https://img.shields.io/jenkins/s/https/jenkins.vacs.fr/Bionic-Wi2wic.svg)](https://jenkins.vacs.fr/job/Bionic-Wi2wic/)
+[![Build Status](https://img.shields.io/endpoint?url=https://porion.vacs.fr/porion/api/v1/projects/wi2wic/badges/build.json)](https://porion.vacs.fr/porion/projects/view/wi2wic/summary)
 [![License](https://img.shields.io/badge/license-APACHE2-blue.svg)](LICENSE)
 ![Commits](https://img.shields.io/github/commits-since/stcarrez/wi2wic/1.0.0.svg)
 [![Docker](https://badgen.net/docker/pulls/ciceron/wi2wic)](https://hub.docker.com/r/ciceron/wi2wic/)
-
 
 Wi2wic is a small server that allows to convert HTML in Wiki text such as Markdown, MediaWiki, Dotclear or Creole.
 It can also convert one Wiki syntax to another.  It can be used to:
@@ -22,30 +21,11 @@ The server is written in Ada and provides the following REST operations:
 
 You can try Wi2wic on https://wi2wic.vacs.fr/wi2wic/index.html
 
+It was created as a demo site for [Ada Wiki](https://github.com/stcarrez/ada-wiki).
+
 # Building Wi2wic
 
-To build `wi2wic` you will need the following projects:
-
-* Ada Servlet   (https://github.com/stcarrez/ada-servlet)
-* Ada Util      (https://github.com/stcarrez/ada-util)
-* Ada Wiki      (https://github.com/stcarrez/ada-wiki)
-* Ada EL        (https://github.com/stcarrez/ada-el)
-* Ada Security  (https://github.com/stcarrez/ada-security)
-
-Wi2wic relies on the following external projects:
-
-* AWS      (https://libre.adacore.com/libre/tools/aws/)
-* XMLAda   (https://libre.adacore.com/libre/tools/xmlada/)
-
-Before building and configuring Wi2wic, you should have configured,
-built and installed all of the above projects.
-
-To configure Wi2wic, use the following command:
-```
-   ./configure
-```
-
-If something goes wrong, check that you have installed the dependencies mentioned above.
+To build `wi2wic` you will [Alire](https://github.com/alire-project/alire).
 
 Then, build the application:
 ```
