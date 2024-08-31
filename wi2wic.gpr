@@ -14,7 +14,14 @@ project wi2wic is
    for Object_Dir use "./" & Wi2wic_Config'Object_Dir & "/obj";
    for Exec_Dir use "./" & Wi2wic_Config'Exec_Dir & "/bin";
 
-   package Binder renames Wi2wic_Config.Binder;
+   package Binder is
+      for Switches ("Ada") use
+        ("-Es",    -- Symbolic tracebacks
+         "-g",     -- Keep binder generated files (for debugging?)
+         "-static" -- Static linking
+        );
+   end Binder;
+
    package Builder renames Wi2wic_Config.Builder;
    package Compiler renames Wi2wic_Config.Compiler;
    package Linker renames Wi2wic_Config.Linker;
