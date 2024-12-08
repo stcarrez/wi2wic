@@ -31,10 +31,11 @@ The server is written in Ada and provides the following REST operations:
 servletada_aws = "any"
 servletada = "^1.7.0"
 security = "^1.5.0"
-utilada = "^2.7.0"
-utilada_xml = "^2.7.0"
+utilada = "^2.8.0"
+utilada_xml = "^2.8.0"
+utilada_aws = "^2.8.0"
 wikiada = "^1.4.0"
-aws = "^23.0"
+aws = "^24.0"
 
 [configuration]
 disabled = true
