@@ -1,16 +1,7 @@
 ### 1. stage: create build image
-FROM ciceron/gnat-bookworm AS wi2wic-build
+FROM ciceron/alire-trixie AS wi2wic-build
 
-ENV BUILD_PREFIX /usr/src/wi2wic
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends libssl-dev
-
-RUN cd /tmp \
-    && wget -O alr.zip https://github.com/alire-project/alire/releases/download/v2.0.1/alr-2.0.1-bin-x86_64-linux.zip \
-    && unzip alr.zip \
-    && mv bin/alr /usr/bin \
-    && rm alr.zip
+ENV BUILD_PREFIX=/usr/src/wi2wic
 
 # Install build dependencies
 RUN mkdir -p /usr/src \
@@ -20,6 +11,8 @@ RUN mkdir -p /usr/src \
    && cd wi2wic \
    && alr --non-interactive index --update-all
 
+RUN /usr/bin/alr toolchain --select gnat_native
+
 RUN cd /usr/src/wi2wic \
    && ls -l \
    && alr --non-interactive update \
@@ -28,10 +21,10 @@ RUN cd /usr/src/wi2wic \
 
 ### 2. stage: create production image
 
-FROM debian:bookworm AS wi2wic
+FROM debian:trixie AS wi2wic
 
-ENV INSTALL_PREFIX /usr/local
-ENV BUILD_PREFIX /usr/src/wi2wic
+ENV INSTALL_PREFIX=/usr/local
+ENV BUILD_PREFIX=/usr/src/wi2wic
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends libssl3
