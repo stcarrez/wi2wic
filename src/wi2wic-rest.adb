@@ -1,6 +1,6 @@
 -----------------------------------------------------------------------
 --  wi2wic-rest -- REST entry points
---  Copyright (C) 2020, 2022 Stephane Carrez
+--  Copyright (C) 2020, 2022, 2026 Stephane Carrez
 --  Written by Stephane Carrez (Stephane.Carrez@gmail.com)
 --  SPDX-License-Identifier: Apache-2.0
 -----------------------------------------------------------------------
@@ -15,9 +15,12 @@ with Wiki.Streams.Html.Stream;
 with Util.Http.Clients;
 with Util.Strings;
 with Servlet.Rest.Operation;
+with Util.Log.Loggers;
 package body Wi2wic.Rest is
 
    use type Wiki.Wiki_Syntax;
+
+   Log     : constant Util.Log.Loggers.Logger := Util.Log.Loggers.Create ("Wi2wic.Rest");
 
    URI_Prefix : constant String := "/v1";
 
@@ -224,7 +227,8 @@ package body Wi2wic.Rest is
             Reply.Set_Status (Util.Http.SC_REQUEST_TIMEOUT);
             return;
 
-         when others =>
+         when E : others =>
+            Log.Error ("Exception while fetching URL '" & URL & "'", E);
             Reply.Set_Status (Util.Http.SC_EXPECTATION_FAILED);
             return;
       end;
@@ -247,6 +251,10 @@ package body Wi2wic.Rest is
    exception
       when Invalid_Format =>
          Reply.Set_Status (Util.Http.SC_NOT_FOUND);
+
+      when E : others =>
+         Log.Error ("Exception while rendering URL '" & URL & "'", E, True);
+         Reply.Set_Status (Util.Http.SC_INTERNAL_SERVER_ERROR);
    end Import;
 
    --  ------------------------------
@@ -265,6 +273,10 @@ package body Wi2wic.Rest is
    exception
       when Invalid_Format =>
          Reply.Set_Status (Util.Http.SC_NOT_FOUND);
+
+      when E : others =>
+         Log.Error ("Exception while converting", E, True);
+         Reply.Set_Status (Util.Http.SC_INTERNAL_SERVER_ERROR);
    end Convert;
 
    --  ------------------------------
@@ -282,6 +294,10 @@ package body Wi2wic.Rest is
    exception
       when Invalid_Format =>
          Reply.Set_Status (Util.Http.SC_NOT_FOUND);
+
+      when E : others =>
+         Log.Error ("Exception while rendering", E, True);
+         Reply.Set_Status (Util.Http.SC_INTERNAL_SERVER_ERROR);
    end Render;
 
    procedure Register (Server : in out Servlet.Core.Servlet_Registry'Class) is
