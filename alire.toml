@@ -40,5 +40,5 @@ aws = "^24.0"
 [configuration]
 disabled = true
 
-[[pins]]
-wikiada = { url = 'https://github.com/stcarrez/ada-wiki.git' }
+# [[pins]]
+# wikiada = { url = 'https://github.com/stcarrez/ada-wiki.git' }
