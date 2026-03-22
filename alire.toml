@@ -7,7 +7,7 @@ maintainers = ["Stephane.Carrez@gmail.com"]
 maintainers-logins = ["stcarrez"]
 project-files = ["wi2wic.gpr"]
 tags = ["web", "demo", "wiki", "markdown", "html"]
-website = "https://gitlab.com/stcarrez/wi2wic"
+website = "https://github.com/stcarrez/wi2wic"
 executables = ["wi2wic-server"]
 long-description = """
 
